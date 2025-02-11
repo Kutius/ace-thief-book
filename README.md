@@ -47,12 +47,11 @@
 ## 🛠️ 配置项
 <!-- configs -->
 
-| Key                               | Description | Type      | Default |
-| --------------------------------- | ----------- | --------- | ------- |
-| `ace-thief-book.filePath`         | 文本文件路径      | `string`  | `""`    |
-| `ace-thief-book.currentPage`      | 当前页码        | `number`  | `1`     |
-| `ace-thief-book.isAutoTurn`       | 自动翻页        | `boolean` | `false` |
-| `ace-thief-book.autoTurnInterval` | 自动翻页间隔      | `number`  | `2500`  |
+| Key                               | Description | Type     | Default |
+| --------------------------------- | ----------- | -------- | ------- |
+| `ace-thief-book.filePath`         | 文本文件路径      | `string` | `""`    |
+| `ace-thief-book.currentPage`      | 当前页码        | `number` | `1`     |
+| `ace-thief-book.autoTurnInterval` | 自动翻页间隔      | `number` | `2500`  |
 
 <!-- configs -->
 

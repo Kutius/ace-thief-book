@@ -4,7 +4,7 @@
 // Meta info
 export const publisher = "kutius"
 export const name = "ace-thief-book"
-export const version = "0.1.4"
+export const version = "0.1.5"
 export const displayName = "ace-thief-book"
 export const description = undefined
 export const extensionId = `${publisher}.${name}`
@@ -68,27 +68,23 @@ export const commands = {
 export type ConfigKey = 
   | "ace-thief-book.filePath"
   | "ace-thief-book.currentPage"
-  | "ace-thief-book.isAutoTurn"
   | "ace-thief-book.autoTurnInterval"
 
 export interface ConfigKeyTypeMap {
   "ace-thief-book.filePath": string,
   "ace-thief-book.currentPage": number,
-  "ace-thief-book.isAutoTurn": boolean,
   "ace-thief-book.autoTurnInterval": number,
 }
 
 export interface ConfigShorthandMap {
   filePath: "ace-thief-book.filePath",
   currentPage: "ace-thief-book.currentPage",
-  isAutoTurn: "ace-thief-book.isAutoTurn",
   autoTurnInterval: "ace-thief-book.autoTurnInterval",
 }
 
 export interface ConfigShorthandTypeMap {
   filePath: string,
   currentPage: number,
-  isAutoTurn: boolean,
   autoTurnInterval: number,
 }
 
@@ -123,16 +119,6 @@ export const configs = {
     default: 1,
   } as ConfigItem<"ace-thief-book.currentPage">,
   /**
-   * 自动翻页
-   * @key `ace-thief-book.isAutoTurn`
-   * @default `false`
-   * @type `boolean`
-   */
-  isAutoTurn: {
-    key: "ace-thief-book.isAutoTurn",
-    default: false,
-  } as ConfigItem<"ace-thief-book.isAutoTurn">,
-  /**
    * 自动翻页间隔
    * @key `ace-thief-book.autoTurnInterval`
    * @default `2500`
@@ -147,7 +133,6 @@ export const configs = {
 export interface ScopedConfigKeyTypeMap {
   "filePath": string,
   "currentPage": number,
-  "isAutoTurn": boolean,
   "autoTurnInterval": number,
 }
 
@@ -156,7 +141,6 @@ export const scopedConfigs = {
   defaults: {
     "filePath": "",
     "currentPage": 1,
-    "isAutoTurn": false,
     "autoTurnInterval": 2500,
   } satisfies ScopedConfigKeyTypeMap,
 }
@@ -165,7 +149,6 @@ export interface NestedConfigs {
   "ace-thief-book": {
     "filePath": string,
     "currentPage": number,
-    "isAutoTurn": boolean,
     "autoTurnInterval": number,
   },
 }
@@ -173,7 +156,6 @@ export interface NestedConfigs {
 export interface NestedScopedConfigs {
   "filePath": string,
   "currentPage": number,
-  "isAutoTurn": boolean,
   "autoTurnInterval": number,
 }
 

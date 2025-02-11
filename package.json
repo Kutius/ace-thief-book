@@ -5,6 +5,7 @@
   "type": "module",
   "version": "0.1.5",
   "private": true,
+  "repository": "https://github.com/kutius/ace-thief-book",
   "categories": [
     "Other"
   ],
@@ -96,11 +97,6 @@
           "type": "number",
           "default": 1,
           "description": "当前页码"
-        },
-        "ace-thief-book.isAutoTurn": {
-          "type": "boolean",
-          "default": false,
-          "description": "自动翻页"
         },
         "ace-thief-book.autoTurnInterval": {
           "type": "number",

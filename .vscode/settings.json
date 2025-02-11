@@ -48,5 +48,6 @@
     "pcss",
     "postcss"
   ],
-  "ace-thief-book.currentPage": 78
+  "ace-thief-book.currentPage": 170,
+  "ace-thief-book.isAutoTurn": false
 }

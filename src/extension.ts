@@ -1,7 +1,7 @@
 import { useIntervalFn } from '@reactive-vscode/vueuse'
 import { computed, defineExtension, ref, useCommands, useIsDarkTheme, useStatusBarItem, watchEffect } from 'reactive-vscode'
 import { StatusBarAlignment, window } from 'vscode'
-import { config, setConfig } from './configs'
+import { config } from './configs'
 import { showFilePicker } from './core/filePicker'
 import { useBookReader } from './core/reader'
 import { commands as commandsMeta } from './generated-meta'
@@ -29,17 +29,19 @@ export = defineExtension(() => {
   useStatusBarItem({
     alignment: StatusBarAlignment.Left,
     priority: 50,
+    tooltip: () => config.currentPage.toString(),
     text: () => showStatusText.value ? formattedText.value : '📚',
     color: () => (isDark.value ? '#333' : '#ccc'),
-    command: commandsMeta.nextPage,
+    command: () => showStatusText.value ? commandsMeta.nextPage : commandsMeta.toggleStatusbar,
   }).show()
 
   // 自动翻页
   const { pause, resume } = useIntervalFn(() => nextPage(), config.autoTurnInterval, { immediate: false })
+  const isAutoTurn = ref(false)
 
   watchEffect(() => {
     if (ready.value) {
-      if (config.isAutoTurn) {
+      if (isAutoTurn.value) {
         logger.info('🌳启用自动翻页')
         resume()
       }
@@ -76,14 +78,14 @@ export = defineExtension(() => {
         if (showStatusText.value) {
           pause()
         }
-        else if (config.isAutoTurn) {
+        else if (isAutoTurn.value) {
           resume()
         }
       }
       showStatusText.value = !showStatusText.value
     },
     [commandsMeta.autoTurn]: () => {
-      setConfig('isAutoTurn', !config.isAutoTurn)
+      isAutoTurn.value = !isAutoTurn.value
     },
     [commandsMeta.reload]: reload,
   })
