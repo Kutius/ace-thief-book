@@ -110,7 +110,7 @@
     "dev": "tsup --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
     "vscode:prepublish": "pnpm run build",
-    "release": "bumpp --tag --push --commit"
+    "release": "npx bumpp --tag --push --commit"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.1",
