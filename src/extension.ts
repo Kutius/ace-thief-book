@@ -43,8 +43,14 @@ export = defineExtension(() => {
   })
 
   useCommands({
-    [commandsMeta.nextPage]: nextPage,
-    [commandsMeta.prevPage]: prevPage,
+    [commandsMeta.nextPage]: () => {
+      nextPage()
+      pause()
+    },
+    [commandsMeta.prevPage]: () => {
+      prevPage()
+      pause()
+    },
     [commandsMeta.gotoPage]: async () => {
       const page = await window.showInputBox({
         prompt: '请输入页码',
@@ -59,6 +65,7 @@ export = defineExtension(() => {
     [commandsMeta.showFilePicker]: showFilePicker,
     [commandsMeta.toggleStatusbar]: () => {
       showStatusText.value = !showStatusText.value
+      pause()
     },
     [commandsMeta.autoTurn]: () => {
       setConfig('isAutoTurn', !config.isAutoTurn)
