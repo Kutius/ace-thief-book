@@ -1,31 +1,65 @@
-# ace-thief-book
+# Ace Thief Book
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/kutius.ace-thief-book)](https://marketplace.visualstudio.com/items?itemName=kutius.ace-thief-book) [![Installs](https://img.shields.io/visual-studio-marketplace/i/kutius.ace-thief-book](https://marketplace.visualstudio.com/items?itemName=kutius.ace-thief-book) [![Reactive VSCode](https://img.shields.io/badge/Reactive-VSCode-%23007ACC?style=flat&labelColor=%23229863)](https://kermanx.github.io/reactive-vscode/)
+一个让你在 VS Code 状态栏上阅读文本文件的扩展。优雅地摸鱼，不留痕迹。
 
-A VS Code extension created with [Reactive VS Code](https://kermanx.github.io/reactive-vscode/).
+<img alt="Version" src="https://img.shields.io/visual-studio-marketplace/v/kutius.ace-thief-book">
 
-## Directory Structure
+## ✨ 特性
 
-* `package.json` - this is the manifest file in which you declare your extension and command.
-* `src/extension.ts` - this is the main file where you write your extension.
+- 在 VS Code 状态栏显示文本内容
+- 文字颜色更不起眼
+- 支持分页阅读和自动翻页
+- 可以隐藏文本内容，只显示一个📚图标
+- 支持记忆阅读进度
+- 完全键盘操作支持
 
-## Get started
+## 🚀 开始使用
 
-* Open this repository in VS Code.
-* Run `pnpm install` to install the dependencies.
-* Run `pnpm dev` to compile the extension and watch for changes.  
-* Press `F5` to open a new window with your extension loaded.
-* Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Hello World`.
-* Set breakpoints in your code inside `src/extension.ts` to debug your extension.
-* Find output from your extension in the debug console.
+1. 在 VS Code 中安装 `Ace-Thief-Book`
+2. 使用 Alt+Shift+5 选择要阅读的文本文件
+3. 使用快捷键控制阅读进度
+4. 需要隐藏时可以使用 Ctrl+M 切换显示模式
 
-## Make changes
+## ⌨️ 快捷键
 
-* You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
-* You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
+- Alt+Shift+1: 下一页
+- Alt+Shift+2: 上一页
+- Alt+Shift+3: 跳转到指定页
+- Alt+Shift+4: 开启/关闭自动翻页
+- Alt+Shift+5: 选择文本文件
+- Alt+Shift+/Ctrl+M: 切换状态栏显示模式
 
-## Go further
+## 🛠️ 配置项
 
-* [Follow UX guidelines](https://code.visualstudio.com/api/ux-guidelines/overview) to create extensions that seamlessly integrate with VS Code's native interface and patterns.
-* [Publish your extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) on the VS Code extension marketplace.
-* Automate builds by setting up [Continuous Integration](https://code.visualstudio.com/api/working-with-extensions/continuous-integration).
+```json
+{
+  "ace-thief-book.filePath": "文本文件路径",
+  "ace-thief-book.currentPage": "当前页码",
+  "ace-thief-book.isAutoTurn": "是否开启自动翻页",
+  "ace-thief-book.autoTurnInterval": "自动翻页间隔(ms)"
+}
+```
+
+## 🔧 开发
+
+```bash
+# 安装依赖
+pnpm install
+
+# 开发模式
+pnpm dev
+
+# 构建
+pnpm build
+```
+
+## 📝 许可证
+
+MIT
+
+## 🌟 致谢
+
+- [Reactive VS Code](https://kermanx.github.io/reactive-vscode/)
+
+---
+🎯 平平无奇的摸鱼，才是最好的摸鱼
