@@ -1,0 +1,125 @@
+{
+  "publisher": "kutius",
+  "name": "ace-thief-book",
+  "displayName": "ace-thief-book",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.cjs",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "ace-thief-book.showFilePicker",
+        "title": "选择文本文件",
+        "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.nextPage",
+        "title": "下一页",
+        "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.prevPage",
+        "title": "上一页",
+        "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.gotoPage",
+        "title": "跳转到指定页",
+        "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.toggleStatusbar",
+        "title": "显示/隐藏状态栏",
+        "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.autoTurn",
+        "title": "自动翻页",
+        "category": "Ace Thief Book"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ace-thief-book.nextPage",
+        "key": "alt+shift+1"
+      },
+      {
+        "command": "ace-thief-book.prevPage",
+        "key": "alt+shift+2"
+      },
+      {
+        "command": "ace-thief-book.gotoPage",
+        "key": "alt+shift+3"
+      },
+      {
+        "command": "ace-thief-book.autoTurn",
+        "key": "alt+shift+4"
+      },
+      {
+        "command": "ace-thief-book.showFilePicker",
+        "key": "alt+shift+5"
+      },
+      {
+        "command": "ace-thief-book.toggleStatusbar",
+        "key": "alt+shift+`"
+      },
+      {
+        "command": "ace-thief-book.toggleStatusbar",
+        "key": "ctrl+m"
+      }
+    ],
+    "configuration": {
+      "title": "ace-thief-book",
+      "properties": {
+        "ace-thief-book.filePath": {
+          "type": "string",
+          "default": "",
+          "description": "文本文件路径"
+        },
+        "ace-thief-book.currentPage": {
+          "type": "number",
+          "default": 1,
+          "description": "当前页码"
+        },
+        "ace-thief-book.isAutoTurn": {
+          "type": "boolean",
+          "default": false,
+          "description": "自动翻页"
+        },
+        "ace-thief-book.autoTurnInterval": {
+          "type": "number",
+          "default": 2500,
+          "description": "自动翻页间隔"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup --env.NODE_ENV production --treeshake",
+    "dev": "tsup --watch ./src --env.NODE_ENV development",
+    "typecheck": "tsc --noEmit",
+    "vscode:prepublish": "pnpm run build",
+    "release": "bumpp --tag --push --commit"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.1.1",
+    "@reactive-vscode/vueuse": "^0.2.10",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "eslint": "^9.19.0",
+    "reactive-vscode": "^0.2.10",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
