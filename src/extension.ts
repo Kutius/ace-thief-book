@@ -74,13 +74,9 @@ export = defineExtension(() => {
     },
     [commandsMeta.showFilePicker]: showFilePicker,
     [commandsMeta.toggleStatusbar]: () => {
-      if (ready.value) {
-        if (showStatusText.value) {
-          pause()
-        }
-        else if (isAutoTurn.value) {
-          resume()
-        }
+      if (showStatusText.value) {
+        // pause()
+        isAutoTurn.value = false
       }
       showStatusText.value = !showStatusText.value
     },
