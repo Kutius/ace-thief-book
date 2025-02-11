@@ -10,7 +10,10 @@ import { logger } from './utils'
 export = defineExtension(() => {
   logger.info('Extension Activated')
 
-  const showStatusText = ref(true)
+  const isShowText = ref(false)
+  const isAutoTurn = ref(false)
+
+  const isDark = useIsDarkTheme()
 
   const {
     text,
@@ -24,20 +27,17 @@ export = defineExtension(() => {
 
   const formattedText = computed(() => text.value ? `${text.value} | ${progress.value}%` : '')
 
-  const isDark = useIsDarkTheme()
-
   useStatusBarItem({
     alignment: StatusBarAlignment.Left,
-    priority: 50,
+    priority: 10,
     tooltip: () => config.currentPage.toString(),
-    text: () => showStatusText.value ? formattedText.value : '📚',
+    text: () => isShowText.value ? formattedText.value : '📚',
     color: () => (isDark.value ? '#333' : '#ccc'),
-    command: () => showStatusText.value ? commandsMeta.nextPage : commandsMeta.toggleStatusbar,
+    command: () => isShowText.value ? commandsMeta.nextPage : commandsMeta.toggleStatusbar,
   }).show()
 
   // 自动翻页
   const { pause, resume } = useIntervalFn(() => nextPage(), config.autoTurnInterval, { immediate: false })
-  const isAutoTurn = ref(false)
 
   watchEffect(() => {
     if (ready.value) {
@@ -74,11 +74,11 @@ export = defineExtension(() => {
     },
     [commandsMeta.showFilePicker]: showFilePicker,
     [commandsMeta.toggleStatusbar]: () => {
-      if (showStatusText.value) {
+      if (isShowText.value) {
         // pause()
         isAutoTurn.value = false
       }
-      showStatusText.value = !showStatusText.value
+      isShowText.value = !isShowText.value
     },
     [commandsMeta.autoTurn]: () => {
       isAutoTurn.value = !isAutoTurn.value
