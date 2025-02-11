@@ -29,16 +29,31 @@
 - Alt+Shift+5: 选择文本文件
 - Alt+Shift+/Ctrl+M: 切换状态栏显示模式
 
-## 🛠️ 配置项
+## 📚 命令
+<!-- commands -->
 
-```json
-{
-  "ace-thief-book.filePath": "文本文件路径",
-  "ace-thief-book.currentPage": "当前页码",
-  "ace-thief-book.isAutoTurn": "是否开启自动翻页",
-  "ace-thief-book.autoTurnInterval": "自动翻页间隔(ms)"
-}
-```
+| Command                          | Title                    |
+| -------------------------------- | ------------------------ |
+| `ace-thief-book.showFilePicker`  | Ace Thief Book: 选择文本文件   |
+| `ace-thief-book.nextPage`        | Ace Thief Book: 下一页      |
+| `ace-thief-book.prevPage`        | Ace Thief Book: 上一页      |
+| `ace-thief-book.gotoPage`        | Ace Thief Book: 跳转到指定页   |
+| `ace-thief-book.toggleStatusbar` | Ace Thief Book: 显示/隐藏状态栏 |
+| `ace-thief-book.autoTurn`        | Ace Thief Book: 自动翻页     |
+
+<!-- commands -->
+
+## 🛠️ 配置项
+<!-- configs -->
+
+| Key                               | Description | Type      | Default |
+| --------------------------------- | ----------- | --------- | ------- |
+| `ace-thief-book.filePath`         | 文本文件路径      | `string`  | `""`    |
+| `ace-thief-book.currentPage`      | 当前页码        | `number`  | `1`     |
+| `ace-thief-book.isAutoTurn`       | 自动翻页        | `boolean` | `false` |
+| `ace-thief-book.autoTurnInterval` | 自动翻页间隔      | `number`  | `2500`  |
+
+<!-- configs -->
 
 ## 🔧 开发
 
