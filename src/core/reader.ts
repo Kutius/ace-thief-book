@@ -25,7 +25,7 @@ export function useBookReader() {
     return Math.floor((currentPage.value / totalPages.value) * 100)
   })
 
-  watchEffect(async (onCleanup) => {
+  function loadBook() {
     if (!isBookOk.value)
       return
 
@@ -33,10 +33,15 @@ export function useBookReader() {
     ready.value = true
 
     logger.info('Loading book:', config.filePath)
+  }
+
+  watchEffect(async (onCleanup) => {
+    loadBook()
 
     onCleanup(() => {
       bookReader.value = null
       ready.value = false
+      text.value = ''
     })
   })
 
@@ -57,7 +62,7 @@ export function useBookReader() {
   }
 
   const nextPage = () => {
-    if (bookReader.value && currentPage.value >= totalPages.value) {
+    if (!bookReader.value || currentPage.value >= totalPages.value) {
       return
     }
     // readPage(currentPage.value + 1)
@@ -72,6 +77,13 @@ export function useBookReader() {
     currentPage.value--
   }
 
+  const gotoPage = async (page: number) => {
+    if (!bookReader.value || page < 1 || page > totalPages.value) {
+      return
+    }
+    currentPage.value = page
+  }
+
   return {
     text,
     ready,
@@ -79,6 +91,8 @@ export function useBookReader() {
     readPage,
     nextPage,
     prevPage,
+    gotoPage,
+    reload: loadBook,
   }
 }
 

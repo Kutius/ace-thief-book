@@ -47,6 +47,11 @@
         "command": "ace-thief-book.autoTurn",
         "title": "自动翻页",
         "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.reload",
+        "title": "重新加载",
+        "category": "Ace Thief Book"
       }
     ],
     "keybindings": [

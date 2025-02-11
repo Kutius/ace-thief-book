@@ -12,7 +12,15 @@ export = defineExtension(() => {
 
   const showStatusText = ref(true)
 
-  const { text, ready, progress, readPage, nextPage, prevPage } = useBookReader()
+  const {
+    text,
+    ready,
+    progress,
+    nextPage,
+    prevPage,
+    gotoPage,
+    reload,
+  } = useBookReader()
 
   const formattedText = computed(() => text.value ? `${text.value} | ${progress.value}%` : '')
 
@@ -60,15 +68,23 @@ export = defineExtension(() => {
         window.showErrorMessage('请输入正确的页码')
         return
       }
-      readPage(+page)
+      gotoPage(+page)
     },
     [commandsMeta.showFilePicker]: showFilePicker,
     [commandsMeta.toggleStatusbar]: () => {
+      if (ready.value) {
+        if (showStatusText.value) {
+          pause()
+        }
+        else if (config.isAutoTurn) {
+          resume()
+        }
+      }
       showStatusText.value = !showStatusText.value
-      pause()
     },
     [commandsMeta.autoTurn]: () => {
       setConfig('isAutoTurn', !config.isAutoTurn)
     },
+    [commandsMeta.reload]: reload,
   })
 })

@@ -40,6 +40,7 @@
 | `ace-thief-book.gotoPage`        | Ace Thief Book: 跳转到指定页   |
 | `ace-thief-book.toggleStatusbar` | Ace Thief Book: 显示/隐藏状态栏 |
 | `ace-thief-book.autoTurn`        | Ace Thief Book: 自动翻页     |
+| `ace-thief-book.reload`          | Ace Thief Book: 重新加载     |
 
 <!-- commands -->
 
