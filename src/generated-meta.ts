@@ -4,7 +4,7 @@
 // Meta info
 export const publisher = "kutius"
 export const name = "ace-thief-book"
-export const version = "0.1.5"
+export const version = "0.1.6"
 export const displayName = "ace-thief-book"
 export const description = undefined
 export const extensionId = `${publisher}.${name}`

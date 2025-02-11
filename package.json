@@ -104,6 +104,24 @@
           "description": "自动翻页间隔"
         }
       }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "aceThiefBookContainer",
+          "title": "Code",
+          "icon": "$(file-code)"
+        }
+      ]
+    },
+    "views": {
+      "aceThiefBookContainer": [
+        {
+          "id": "aceThiefBookReaderController",
+          "name": "Coding",
+          "type": "webview"
+        }
+      ]
     }
   },
   "scripts": {

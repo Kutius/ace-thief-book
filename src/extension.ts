@@ -1,9 +1,18 @@
 import { useIntervalFn } from '@reactive-vscode/vueuse'
-import { computed, defineExtension, ref, useCommands, useIsDarkTheme, useStatusBarItem, watchEffect } from 'reactive-vscode'
+import {
+  computed,
+  defineExtension,
+  ref,
+  useCommands,
+  useIsDarkTheme,
+  useStatusBarItem,
+  watchEffect,
+} from 'reactive-vscode'
 import { StatusBarAlignment, window } from 'vscode'
 import { config } from './configs'
 import { showFilePicker } from './core/filePicker'
 import { useBookReader } from './core/reader'
+import { useController } from './core/webview'
 import { commands as commandsMeta } from './generated-meta'
 import { logger } from './utils'
 
@@ -31,7 +40,7 @@ export = defineExtension(() => {
     alignment: StatusBarAlignment.Left,
     priority: 10,
     tooltip: () => config.currentPage.toString(),
-    text: () => isShowText.value ? formattedText.value : '📚',
+    text: () => isShowText.value ? formattedText.value : '📑',
     color: () => (isDark.value ? '#333' : '#ccc'),
     command: () => isShowText.value ? commandsMeta.nextPage : commandsMeta.toggleStatusbar,
   }).show()
@@ -55,11 +64,11 @@ export = defineExtension(() => {
   useCommands({
     [commandsMeta.nextPage]: () => {
       nextPage()
-      pause()
+      isAutoTurn.value = false
     },
     [commandsMeta.prevPage]: () => {
       prevPage()
-      pause()
+      isAutoTurn.value = false
     },
     [commandsMeta.gotoPage]: async () => {
       const page = await window.showInputBox({
@@ -84,5 +93,10 @@ export = defineExtension(() => {
       isAutoTurn.value = !isAutoTurn.value
     },
     [commandsMeta.reload]: reload,
+  })
+
+  useController({
+    onUp: prevPage,
+    onDown: nextPage,
   })
 })
