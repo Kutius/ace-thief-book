@@ -4,7 +4,7 @@
 // Meta info
 export const publisher = "kutius"
 export const name = "ace-thief-book"
-export const version = "0.1.6"
+export const version = "0.2.0"
 export const displayName = "ace-thief-book"
 export const description = undefined
 export const extensionId = `${publisher}.${name}`
@@ -69,23 +69,31 @@ export type ConfigKey =
   | "ace-thief-book.filePath"
   | "ace-thief-book.currentPage"
   | "ace-thief-book.autoTurnInterval"
+  | "ace-thief-book.lightColor"
+  | "ace-thief-book.darkColor"
 
 export interface ConfigKeyTypeMap {
   "ace-thief-book.filePath": string,
   "ace-thief-book.currentPage": number,
   "ace-thief-book.autoTurnInterval": number,
+  "ace-thief-book.lightColor": string,
+  "ace-thief-book.darkColor": string,
 }
 
 export interface ConfigShorthandMap {
   filePath: "ace-thief-book.filePath",
   currentPage: "ace-thief-book.currentPage",
   autoTurnInterval: "ace-thief-book.autoTurnInterval",
+  lightColor: "ace-thief-book.lightColor",
+  darkColor: "ace-thief-book.darkColor",
 }
 
 export interface ConfigShorthandTypeMap {
   filePath: string,
   currentPage: number,
   autoTurnInterval: number,
+  lightColor: string,
+  darkColor: string,
 }
 
 export interface ConfigItem<T extends keyof ConfigKeyTypeMap> {
@@ -128,12 +136,34 @@ export const configs = {
     key: "ace-thief-book.autoTurnInterval",
     default: 2500,
   } as ConfigItem<"ace-thief-book.autoTurnInterval">,
+  /**
+   * 亮色文字颜色
+   * @key `ace-thief-book.lightColor`
+   * @default `"#ccc"`
+   * @type `string`
+   */
+  lightColor: {
+    key: "ace-thief-book.lightColor",
+    default: "#ccc",
+  } as ConfigItem<"ace-thief-book.lightColor">,
+  /**
+   * 暗色文字颜色
+   * @key `ace-thief-book.darkColor`
+   * @default `"#333"`
+   * @type `string`
+   */
+  darkColor: {
+    key: "ace-thief-book.darkColor",
+    default: "#333",
+  } as ConfigItem<"ace-thief-book.darkColor">,
 }
 
 export interface ScopedConfigKeyTypeMap {
   "filePath": string,
   "currentPage": number,
   "autoTurnInterval": number,
+  "lightColor": string,
+  "darkColor": string,
 }
 
 export const scopedConfigs = {
@@ -142,6 +172,8 @@ export const scopedConfigs = {
     "filePath": "",
     "currentPage": 1,
     "autoTurnInterval": 2500,
+    "lightColor": "#ccc",
+    "darkColor": "#333",
   } satisfies ScopedConfigKeyTypeMap,
 }
 
@@ -150,6 +182,8 @@ export interface NestedConfigs {
     "filePath": string,
     "currentPage": number,
     "autoTurnInterval": number,
+    "lightColor": string,
+    "darkColor": string,
   },
 }
 
@@ -157,5 +191,7 @@ export interface NestedScopedConfigs {
   "filePath": string,
   "currentPage": number,
   "autoTurnInterval": number,
+  "lightColor": string,
+  "darkColor": string,
 }
 

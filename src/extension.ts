@@ -41,7 +41,7 @@ export = defineExtension(() => {
     priority: 10,
     tooltip: () => config.currentPage.toString(),
     text: () => isShowText.value ? formattedText.value : '📑',
-    color: () => (isDark.value ? '#333' : '#ccc'),
+    color: () => (isDark.value ? config.darkColor : config.lightColor),
     command: () => isShowText.value ? commandsMeta.nextPage : commandsMeta.toggleStatusbar,
   }).show()
 

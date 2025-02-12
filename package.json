@@ -10,7 +10,7 @@
     "Other"
   ],
   "main": "./dist/extension.cjs",
-  "icon": "icon.png",
+  "icon": "icon.webp",
   "engines": {
     "vscode": "^1.89.0"
   },
@@ -102,6 +102,16 @@
           "type": "number",
           "default": 2500,
           "description": "自动翻页间隔"
+        },
+        "ace-thief-book.lightColor": {
+          "type": "string",
+          "default": "#ccc",
+          "description": "亮色文字颜色"
+        },
+        "ace-thief-book.darkColor": {
+          "type": "string",
+          "default": "#333",
+          "description": "暗色文字颜色"
         }
       }
     },
