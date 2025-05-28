@@ -133,7 +133,7 @@
         },
         "ace-thief-book.webview.enabled": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "启用/禁用 Ace Thief Book 阅读器面板"
         }
       }

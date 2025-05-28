@@ -57,7 +57,7 @@
 | `ace-thief-book.lightColor`          | 亮色文字颜色                     | `string`  | `"#ccc"` |
 | `ace-thief-book.darkColor`           | 暗色文字颜色                     | `string`  | `"#333"` |
 | `ace-thief-book.progressDisplayMode` | 进度显示方式: 百分比或页码             | `string`  | `"page"` |
-| `ace-thief-book.webview.enabled`     | 启用/禁用 Ace Thief Book 阅读器面板 | `boolean` | `true`   |
+| `ace-thief-book.webview.enabled`     | 启用/禁用 Ace Thief Book 阅读器面板 | `boolean` | `false`  |
 
 <!-- configs -->
 
