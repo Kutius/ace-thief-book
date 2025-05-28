@@ -34,7 +34,7 @@ export = defineExtension(() => {
     reload,
   } = useBookReader()
 
-  const formattedText = computed(() => text.value ? `${text.value} | ${progress.value}%` : '')
+  const formattedText = computed(() => text.value ? `${text.value} | ${progress.value}` : '')
 
   useStatusBarItem({
     alignment: StatusBarAlignment.Left,

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { computed, ref, shallowRef, watchEffect } from 'reactive-vscode'
 
+import { computed, ref, shallowRef, watchEffect } from 'reactive-vscode'
 import { config, isBookOk, setConfig } from '../configs'
 import { logger } from '../utils'
 
@@ -22,7 +22,12 @@ export function useBookReader() {
     if (!bookReader.value) {
       return 0
     }
-    return Math.floor((currentPage.value / totalPages.value) * 100)
+    if (config.progressDisplayMode === '页码') {
+      return `${currentPage.value}/${totalPages.value}`
+    }
+    else {
+      return `${Math.floor((currentPage.value / totalPages.value) * 100)}%`
+    }
   })
 
   function loadBook() {

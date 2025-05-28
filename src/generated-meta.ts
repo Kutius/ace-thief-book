@@ -4,7 +4,7 @@
 // Meta info
 export const publisher = "kutius"
 export const name = "ace-thief-book"
-export const version = "0.2.0"
+export const version = "0.2.1"
 export const displayName = "ace-thief-book"
 export const description = undefined
 export const extensionId = `${publisher}.${name}`
@@ -71,6 +71,7 @@ export type ConfigKey =
   | "ace-thief-book.autoTurnInterval"
   | "ace-thief-book.lightColor"
   | "ace-thief-book.darkColor"
+  | "ace-thief-book.progressDisplayMode"
 
 export interface ConfigKeyTypeMap {
   "ace-thief-book.filePath": string,
@@ -78,6 +79,7 @@ export interface ConfigKeyTypeMap {
   "ace-thief-book.autoTurnInterval": number,
   "ace-thief-book.lightColor": string,
   "ace-thief-book.darkColor": string,
+  "ace-thief-book.progressDisplayMode": ("百分比" | "页码"),
 }
 
 export interface ConfigShorthandMap {
@@ -86,6 +88,7 @@ export interface ConfigShorthandMap {
   autoTurnInterval: "ace-thief-book.autoTurnInterval",
   lightColor: "ace-thief-book.lightColor",
   darkColor: "ace-thief-book.darkColor",
+  progressDisplayMode: "ace-thief-book.progressDisplayMode",
 }
 
 export interface ConfigShorthandTypeMap {
@@ -94,6 +97,7 @@ export interface ConfigShorthandTypeMap {
   autoTurnInterval: number,
   lightColor: string,
   darkColor: string,
+  progressDisplayMode: ("百分比" | "页码"),
 }
 
 export interface ConfigItem<T extends keyof ConfigKeyTypeMap> {
@@ -156,6 +160,16 @@ export const configs = {
     key: "ace-thief-book.darkColor",
     default: "#333",
   } as ConfigItem<"ace-thief-book.darkColor">,
+  /**
+   * 进度显示方式: 百分比或页码
+   * @key `ace-thief-book.progressDisplayMode`
+   * @default `"页码"`
+   * @type `string`
+   */
+  progressDisplayMode: {
+    key: "ace-thief-book.progressDisplayMode",
+    default: "页码",
+  } as ConfigItem<"ace-thief-book.progressDisplayMode">,
 }
 
 export interface ScopedConfigKeyTypeMap {
@@ -164,6 +178,7 @@ export interface ScopedConfigKeyTypeMap {
   "autoTurnInterval": number,
   "lightColor": string,
   "darkColor": string,
+  "progressDisplayMode": ("百分比" | "页码"),
 }
 
 export const scopedConfigs = {
@@ -174,6 +189,7 @@ export const scopedConfigs = {
     "autoTurnInterval": 2500,
     "lightColor": "#ccc",
     "darkColor": "#333",
+    "progressDisplayMode": "页码",
   } satisfies ScopedConfigKeyTypeMap,
 }
 
@@ -184,6 +200,7 @@ export interface NestedConfigs {
     "autoTurnInterval": number,
     "lightColor": string,
     "darkColor": string,
+    "progressDisplayMode": ("百分比" | "页码"),
   },
 }
 
@@ -193,5 +210,6 @@ export interface NestedScopedConfigs {
   "autoTurnInterval": number,
   "lightColor": string,
   "darkColor": string,
+  "progressDisplayMode": ("百分比" | "页码"),
 }
 
