@@ -13,7 +13,7 @@ import { config } from './configs'
 import { showFilePicker } from './core/filePicker'
 import { useBookReader } from './core/reader'
 import { useController } from './core/webview'
-import { commands as commandsMeta } from './generated-meta'
+import { commands as commandsMeta } from './generated/meta'
 import { logger } from './utils'
 
 export = defineExtension(() => {

@@ -115,12 +115,17 @@
         },
         "ace-thief-book.progressDisplayMode": {
           "type": "string",
-          "default": "页码",
+          "default": "page",
           "enum": [
-            "百分比",
-            "页码"
+            "percent",
+            "page"
           ],
           "description": "进度显示方式: 百分比或页码"
+        },
+        "ace-thief-book.webview.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用/禁用 Ace Thief Book 阅读器面板"
         }
       }
     },
@@ -138,7 +143,8 @@
         {
           "id": "aceThiefBookReaderController",
           "name": "Coding",
-          "type": "webview"
+          "type": "webview",
+          "when": "config.ace-thief-book.webview.enabled"
         }
       ]
     }
@@ -149,8 +155,10 @@
     "typecheck": "tsc --noEmit",
     "up": "pnpm dlx taze -I",
     "vscode:prepublish": "pnpm run build",
-    "release": "npx bumpp --tag --push --commit",
-    "pkg": "pnpm vsce package --no-dependencies"
+    "pkg": "pnpm vsce package --no-dependencies",
+    "prepare": "pnpm run update",
+    "update": "vscode-ext-gen --output src/generated/meta.ts",
+    "release": "npx bumpp --tag --push --commit"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
@@ -161,6 +169,7 @@
     "eslint": "^9.27.0",
     "reactive-vscode": "^0.2.14",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vscode-ext-gen": "^1.0.2"
   }
 }
