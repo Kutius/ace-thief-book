@@ -166,21 +166,33 @@ class BookReader {
   }
 
   // 搜索文本并返回匹配的页码数组
-  async searchText(keyword: string): Promise<number[]> {
+  async searchText(keyword: string, contextLength = 20): Promise<{ page: number, context: string }[]> {
     const content = await this.readFileContent()
-    const matches: number[] = []
+    const results: any[] = []
     let pos = 0
     let foundPos = content.indexOf(keyword, pos)
 
     while (foundPos !== -1) {
       const page = Math.floor(foundPos / this.pageSize) + 1
-      if (!matches.includes(page)) {
-        matches.push(page)
-      }
+
+      const contextStart = Math.max(0, foundPos - contextLength)
+      const contextEnd = Math.min(content.length, foundPos + keyword.length + contextLength)
+
+      const context = content.slice(contextStart, contextEnd)
+
+      // 检查是否需要添加省略号
+      const leftEllipsis = contextStart > 0 ? '...' : ''
+      const rightEllipsis = contextEnd < content.length ? '...' : ''
+
+      results.push({
+        page,
+        context: `${leftEllipsis}${context}${rightEllipsis}`,
+      })
+
       pos = foundPos + keyword.length
       foundPos = content.indexOf(keyword, pos)
     }
 
-    return matches
+    return results
   }
 }

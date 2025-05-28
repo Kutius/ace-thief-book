@@ -22,14 +22,6 @@ export = defineExtension(() => {
   const isShowText = ref(false)
   const isAutoTurn = ref(false)
 
-  // 搜索结果状态
-  interface SearchResult {
-    page: number
-    content: string
-  }
-  let searchResults: SearchResult[] = []
-  let currentResultIndex = 0
-
   const isDark = useIsDarkTheme()
 
   const {
@@ -110,34 +102,31 @@ export = defineExtension(() => {
       if (!keyword)
         return
 
-      const matches = await reader.value?.searchText(keyword)
-      if (!matches?.length) {
+      const searchResults = await reader.value?.searchText(keyword)
+      if (!searchResults?.length) {
         window.showInformationMessage(`未找到包含"${keyword}"的页面`)
         return
       }
 
-      // 保存搜索结果并跳转到第一个匹配结果
-      searchResults = matches.map(page => ({ page, content: keyword }))
-      currentResultIndex = 0
-      gotoPage(searchResults[0].page)
-
-      if (matches.length > 1) {
-        window.showInformationMessage(
-          `找到${matches.length}个结果，使用"alt+shift+8"查看下一个结果。`,
-        )
-      }
-    },
-    [commandsMeta.nextSearchResult]: () => {
-      if (!searchResults.length) {
-        window.showInformationMessage('没有可用的搜索结果')
+      if (searchResults.length === 1) {
+        gotoPage(searchResults[0].page)
         return
       }
 
-      currentResultIndex = (currentResultIndex + 1) % searchResults.length
-      gotoPage(searchResults[currentResultIndex].page)
-      window.showInformationMessage(
-        `跳转到第${currentResultIndex + 1}/${searchResults.length}个结果`,
+      const selectedItem = await window.showQuickPick(
+        searchResults.map(result => ({
+          label: `第${result.page}页`,
+          description: result.context,
+          page: result.page,
+        })),
+        {
+          placeHolder: `找到${searchResults.length}个结果，选择要跳转的页面`,
+        },
       )
+
+      if (selectedItem) {
+        gotoPage(selectedItem.page)
+      }
     },
   })
 
