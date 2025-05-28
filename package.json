@@ -115,12 +115,12 @@
         },
         "ace-thief-book.progressDisplayMode": {
           "type": "string",
-          "default": "percent",
+          "default": "页码",
           "enum": [
-            "percent",
-            "pages"
+            "百分比",
+            "页码"
           ],
-          "description": "进度显示方式: percent(百分比) 或 pages(页码)"
+          "description": "进度显示方式: 百分比或页码"
         }
       }
     },
@@ -148,7 +148,8 @@
     "dev": "tsup --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
     "vscode:prepublish": "pnpm run build",
-    "release": "npx bumpp --tag --push --commit"
+    "release": "npx bumpp --tag --push --commit",
+    "pkg": "pnpm vsce package --no-dependencies"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.1",

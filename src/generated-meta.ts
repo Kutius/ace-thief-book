@@ -79,7 +79,7 @@ export interface ConfigKeyTypeMap {
   "ace-thief-book.autoTurnInterval": number,
   "ace-thief-book.lightColor": string,
   "ace-thief-book.darkColor": string,
-  "ace-thief-book.progressDisplayMode": ("percent" | "pages"),
+  "ace-thief-book.progressDisplayMode": ("百分比" | "页码"),
 }
 
 export interface ConfigShorthandMap {
@@ -97,7 +97,7 @@ export interface ConfigShorthandTypeMap {
   autoTurnInterval: number,
   lightColor: string,
   darkColor: string,
-  progressDisplayMode: ("percent" | "pages"),
+  progressDisplayMode: ("百分比" | "页码"),
 }
 
 export interface ConfigItem<T extends keyof ConfigKeyTypeMap> {
@@ -161,14 +161,14 @@ export const configs = {
     default: "#333",
   } as ConfigItem<"ace-thief-book.darkColor">,
   /**
-   * 进度显示方式: percent(百分比) 或 pages(页码)
+   * 进度显示方式: 百分比或页码
    * @key `ace-thief-book.progressDisplayMode`
-   * @default `"percent"`
+   * @default `"页码"`
    * @type `string`
    */
   progressDisplayMode: {
     key: "ace-thief-book.progressDisplayMode",
-    default: "percent",
+    default: "页码",
   } as ConfigItem<"ace-thief-book.progressDisplayMode">,
 }
 
@@ -178,7 +178,7 @@ export interface ScopedConfigKeyTypeMap {
   "autoTurnInterval": number,
   "lightColor": string,
   "darkColor": string,
-  "progressDisplayMode": ("percent" | "pages"),
+  "progressDisplayMode": ("百分比" | "页码"),
 }
 
 export const scopedConfigs = {
@@ -189,7 +189,7 @@ export const scopedConfigs = {
     "autoTurnInterval": 2500,
     "lightColor": "#ccc",
     "darkColor": "#333",
-    "progressDisplayMode": "percent",
+    "progressDisplayMode": "页码",
   } satisfies ScopedConfigKeyTypeMap,
 }
 
@@ -200,7 +200,7 @@ export interface NestedConfigs {
     "autoTurnInterval": number,
     "lightColor": string,
     "darkColor": string,
-    "progressDisplayMode": ("percent" | "pages"),
+    "progressDisplayMode": ("百分比" | "页码"),
   },
 }
 
@@ -210,6 +210,6 @@ export interface NestedScopedConfigs {
   "autoTurnInterval": number,
   "lightColor": string,
   "darkColor": string,
-  "progressDisplayMode": ("percent" | "pages"),
+  "progressDisplayMode": ("百分比" | "页码"),
 }
 
