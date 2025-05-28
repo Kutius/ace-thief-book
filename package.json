@@ -112,6 +112,15 @@
           "type": "string",
           "default": "#333",
           "description": "暗色文字颜色"
+        },
+        "ace-thief-book.progressDisplayMode": {
+          "type": "string",
+          "default": "percent",
+          "enum": [
+            "percent",
+            "pages"
+          ],
+          "description": "进度显示方式: percent(百分比) 或 pages(页码)"
         }
       }
     },
@@ -146,6 +155,7 @@
     "@reactive-vscode/vueuse": "^0.2.10",
     "@types/node": "18.x",
     "@types/vscode": "^1.89.0",
+    "@vscode/vsce": "^3.4.2",
     "eslint": "^9.19.0",
     "reactive-vscode": "^0.2.10",
     "tsup": "^8.0.2",

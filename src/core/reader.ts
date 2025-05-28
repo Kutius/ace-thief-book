@@ -22,7 +22,10 @@ export function useBookReader() {
     if (!bookReader.value) {
       return 0
     }
-    return Math.floor((currentPage.value / totalPages.value) * 100)
+    if (config.progressDisplayMode === 'pages') {
+      return `${currentPage.value}/${totalPages.value}`
+    }
+    return `${Math.floor((currentPage.value / totalPages.value) * 100)}%`
   })
 
   function loadBook() {
