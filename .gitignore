@@ -1,2 +1,5 @@
 dist
 node_modules
+
+# Auto-generated meta files
+src/generated-meta.ts
