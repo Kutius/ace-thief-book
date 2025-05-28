@@ -3,7 +3,7 @@
   "name": "ace-thief-book",
   "displayName": "ace-thief-book",
   "type": "module",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "repository": "https://github.com/kutius/ace-thief-book",
   "categories": [
