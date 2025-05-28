@@ -1,8 +1,8 @@
-import type { NestedScopedConfigs } from './generated-meta'
+import type { NestedScopedConfigs } from './generated/meta'
 import { statSync } from 'node:fs'
 import { computed, defineConfigObject } from 'reactive-vscode'
 import { ConfigurationTarget } from 'vscode'
-import { scopedConfigs } from './generated-meta'
+import { scopedConfigs } from './generated/meta'
 
 export const config = defineConfigObject<NestedScopedConfigs>(
   scopedConfigs.scope,

@@ -22,7 +22,7 @@ export function useBookReader() {
     if (!bookReader.value) {
       return 0
     }
-    if (config.progressDisplayMode === '页码') {
+    if (config.progressDisplayMode === 'page') {
       return `${currentPage.value}/${totalPages.value}`
     }
     else {

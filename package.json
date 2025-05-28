@@ -3,7 +3,7 @@
   "name": "ace-thief-book",
   "displayName": "ace-thief-book",
   "type": "module",
-  "version": "0.2.2",
+  "version": "0.3.3",
   "private": true,
   "repository": "https://github.com/kutius/ace-thief-book",
   "categories": [
@@ -12,7 +12,7 @@
   "main": "./dist/extension.cjs",
   "icon": "icon.webp",
   "engines": {
-    "vscode": "^1.89.0"
+    "vscode": "^1.100.0"
   },
   "activationEvents": [
     "onStartupFinished"
@@ -133,12 +133,17 @@
         },
         "ace-thief-book.progressDisplayMode": {
           "type": "string",
-          "default": "页码",
+          "default": "page",
           "enum": [
-            "百分比",
-            "页码"
+            "percent",
+            "page"
           ],
           "description": "进度显示方式: 百分比或页码"
+        },
+        "ace-thief-book.webview.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用/禁用 Ace Thief Book 阅读器面板"
         }
       }
     },
@@ -156,7 +161,8 @@
         {
           "id": "aceThiefBookReaderController",
           "name": "Coding",
-          "type": "webview"
+          "type": "webview",
+          "when": "config.ace-thief-book.webview.enabled"
         }
       ]
     }
@@ -165,19 +171,23 @@
     "build": "tsup --env.NODE_ENV production --treeshake",
     "dev": "tsup --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
+    "up": "pnpm dlx taze -I",
     "vscode:prepublish": "pnpm run build",
-    "release": "npx bumpp --tag --push --commit",
-    "pkg": "pnpm vsce package --no-dependencies"
+    "pkg": "pnpm vsce package --no-dependencies",
+    "prepare": "pnpm run update",
+    "update": "vscode-ext-gen --output src/generated/meta.ts",
+    "release": "npx bumpp --tag --push --commit"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.1.1",
-    "@reactive-vscode/vueuse": "^0.2.10",
+    "@antfu/eslint-config": "^4.13.2",
+    "@reactive-vscode/vueuse": "^0.2.17",
     "@types/node": "18.x",
-    "@types/vscode": "^1.89.0",
+    "@types/vscode": "^1.100.0",
     "@vscode/vsce": "^3.4.2",
-    "eslint": "^9.19.0",
-    "reactive-vscode": "^0.2.10",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5"
+    "eslint": "^9.27.0",
+    "reactive-vscode": "^0.2.14",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vscode-ext-gen": "^1.0.2"
   }
 }

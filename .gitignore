@@ -1,5 +1,7 @@
-dist
 node_modules
+.DS_Store
+dist
+src/generated
 
 # Auto-generated meta files
 src/generated-meta.ts
