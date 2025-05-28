@@ -32,15 +32,17 @@
 ## 📚 命令
 <!-- commands -->
 
-| Command                          | Title                    |
-| -------------------------------- | ------------------------ |
-| `ace-thief-book.showFilePicker`  | Ace Thief Book: 选择文本文件   |
-| `ace-thief-book.nextPage`        | Ace Thief Book: 下一页      |
-| `ace-thief-book.prevPage`        | Ace Thief Book: 上一页      |
-| `ace-thief-book.gotoPage`        | Ace Thief Book: 跳转到指定页   |
-| `ace-thief-book.toggleStatusbar` | Ace Thief Book: 显示/隐藏状态栏 |
-| `ace-thief-book.autoTurn`        | Ace Thief Book: 自动翻页     |
-| `ace-thief-book.reload`          | Ace Thief Book: 重新加载     |
+| Command                           | Title                    |
+| --------------------------------- | ------------------------ |
+| `ace-thief-book.showFilePicker`   | Ace Thief Book: 选择文本文件   |
+| `ace-thief-book.nextPage`         | Ace Thief Book: 下一页      |
+| `ace-thief-book.prevPage`         | Ace Thief Book: 上一页      |
+| `ace-thief-book.gotoPage`         | Ace Thief Book: 跳转到指定页   |
+| `ace-thief-book.toggleStatusbar`  | Ace Thief Book: 显示/隐藏状态栏 |
+| `ace-thief-book.autoTurn`         | Ace Thief Book: 自动翻页     |
+| `ace-thief-book.reload`           | Ace Thief Book: 重新加载     |
+| `ace-thief-book.searchText`       | Ace Thief Book: 关键字搜索    |
+| `ace-thief-book.nextSearchResult` | Ace Thief Book: 下一个搜索结果  |
 
 <!-- commands -->
 

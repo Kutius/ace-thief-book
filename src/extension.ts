@@ -22,6 +22,14 @@ export = defineExtension(() => {
   const isShowText = ref(false)
   const isAutoTurn = ref(false)
 
+  // 搜索结果状态
+  interface SearchResult {
+    page: number
+    content: string
+  }
+  let searchResults: SearchResult[] = []
+  let currentResultIndex = 0
+
   const isDark = useIsDarkTheme()
 
   const {
@@ -32,6 +40,7 @@ export = defineExtension(() => {
     prevPage,
     gotoPage,
     reload,
+    reader,
   } = useBookReader()
 
   const formattedText = computed(() => text.value ? `${text.value} | ${progress.value}` : '')
@@ -93,6 +102,43 @@ export = defineExtension(() => {
       isAutoTurn.value = !isAutoTurn.value
     },
     [commandsMeta.reload]: reload,
+    [commandsMeta.searchText]: async () => {
+      const keyword = await window.showInputBox({
+        prompt: '请输入搜索关键字',
+        placeHolder: '请输入要搜索的内容',
+      })
+      if (!keyword)
+        return
+
+      const matches = await reader.value?.searchText(keyword)
+      if (!matches?.length) {
+        window.showInformationMessage(`未找到包含"${keyword}"的页面`)
+        return
+      }
+
+      // 保存搜索结果并跳转到第一个匹配结果
+      searchResults = matches.map(page => ({ page, content: keyword }))
+      currentResultIndex = 0
+      gotoPage(searchResults[0].page)
+
+      if (matches.length > 1) {
+        window.showInformationMessage(
+          `找到${matches.length}个结果，使用"alt+shift+8"查看下一个结果。`,
+        )
+      }
+    },
+    [commandsMeta.nextSearchResult]: () => {
+      if (!searchResults.length) {
+        window.showInformationMessage('没有可用的搜索结果')
+        return
+      }
+
+      currentResultIndex = (currentResultIndex + 1) % searchResults.length
+      gotoPage(searchResults[currentResultIndex].page)
+      window.showInformationMessage(
+        `跳转到第${currentResultIndex + 1}/${searchResults.length}个结果`,
+      )
+    },
   })
 
   useController({

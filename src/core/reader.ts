@@ -98,6 +98,7 @@ export function useBookReader() {
     prevPage,
     gotoPage,
     reload: loadBook,
+    reader: bookReader,
   }
 }
 
@@ -162,5 +163,24 @@ class BookReader {
       return 0
     }
     return Math.ceil(this.fileContent!.length / this.pageSize)
+  }
+
+  // 搜索文本并返回匹配的页码数组
+  async searchText(keyword: string): Promise<number[]> {
+    const content = await this.readFileContent()
+    const matches: number[] = []
+    let pos = 0
+    let foundPos = content.indexOf(keyword, pos)
+
+    while (foundPos !== -1) {
+      const page = Math.floor(foundPos / this.pageSize) + 1
+      if (!matches.includes(page)) {
+        matches.push(page)
+      }
+      pos = foundPos + keyword.length
+      foundPos = content.indexOf(keyword, pos)
+    }
+
+    return matches
   }
 }

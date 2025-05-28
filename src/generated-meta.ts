@@ -4,7 +4,7 @@
 // Meta info
 export const publisher = "kutius"
 export const name = "ace-thief-book"
-export const version = "0.2.1"
+export const version = "0.2.2"
 export const displayName = "ace-thief-book"
 export const description = undefined
 export const extensionId = `${publisher}.${name}`
@@ -20,6 +20,8 @@ export type CommandKey =
   | "ace-thief-book.toggleStatusbar"
   | "ace-thief-book.autoTurn"
   | "ace-thief-book.reload"
+  | "ace-thief-book.searchText"
+  | "ace-thief-book.nextSearchResult"
 
 /**
  * Commands map registed by `kutius.ace-thief-book`
@@ -60,6 +62,16 @@ export const commands = {
    * @value `ace-thief-book.reload`
    */
   reload: "ace-thief-book.reload",
+  /**
+   * 关键字搜索
+   * @value `ace-thief-book.searchText`
+   */
+  searchText: "ace-thief-book.searchText",
+  /**
+   * 下一个搜索结果
+   * @value `ace-thief-book.nextSearchResult`
+   */
+  nextSearchResult: "ace-thief-book.nextSearchResult",
 } satisfies Record<string, CommandKey>
 
 /**

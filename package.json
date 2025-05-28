@@ -3,7 +3,7 @@
   "name": "ace-thief-book",
   "displayName": "ace-thief-book",
   "type": "module",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "repository": "https://github.com/kutius/ace-thief-book",
   "categories": [
@@ -53,6 +53,16 @@
         "command": "ace-thief-book.reload",
         "title": "重新加载",
         "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.searchText",
+        "title": "关键字搜索",
+        "category": "Ace Thief Book"
+      },
+      {
+        "command": "ace-thief-book.nextSearchResult",
+        "title": "下一个搜索结果",
+        "category": "Ace Thief Book"
       }
     ],
     "keybindings": [
@@ -83,6 +93,14 @@
       {
         "command": "ace-thief-book.toggleStatusbar",
         "key": "ctrl+m"
+      },
+      {
+        "command": "ace-thief-book.searchText",
+        "key": "alt+shift+7"
+      },
+      {
+        "command": "ace-thief-book.nextSearchResult",
+        "key": "alt+shift+8"
       }
     ],
     "configuration": {
