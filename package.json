@@ -12,7 +12,7 @@
   "main": "./dist/extension.cjs",
   "icon": "icon.webp",
   "engines": {
-    "vscode": "^1.89.0"
+    "vscode": "^1.100.0"
   },
   "activationEvents": [
     "onStartupFinished"
@@ -147,19 +147,20 @@
     "build": "tsup --env.NODE_ENV production --treeshake",
     "dev": "tsup --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
+    "up": "pnpm dlx taze -I",
     "vscode:prepublish": "pnpm run build",
     "release": "npx bumpp --tag --push --commit",
     "pkg": "pnpm vsce package --no-dependencies"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.1.1",
-    "@reactive-vscode/vueuse": "^0.2.10",
+    "@antfu/eslint-config": "^4.13.2",
+    "@reactive-vscode/vueuse": "^0.2.17",
     "@types/node": "18.x",
-    "@types/vscode": "^1.89.0",
+    "@types/vscode": "^1.100.0",
     "@vscode/vsce": "^3.4.2",
-    "eslint": "^9.19.0",
-    "reactive-vscode": "^0.2.10",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5"
+    "eslint": "^9.27.0",
+    "reactive-vscode": "^0.2.14",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   }
 }
